@@ -1,0 +1,14 @@
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from "./componentes/header/header.component";
+import { HomeComponent } from "./componentes/home/home.component";
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet, HeaderComponent, HomeComponent, Mat],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  title = 'cadastro-produtos';
+}

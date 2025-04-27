@@ -1,0 +1,46 @@
+<div class="container">
+  <h2>Registrar Venda</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Vendedor</mat-label>
+      <mat-select [(ngModel)]="venda.vendedor.id" name="vendedor" required>
+        <mat-option *ngFor="let vendedor of vendedores" [value]="vendedor.id">
+          {{vendedor.nome}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Produto</mat-label>
+      <mat-select [(ngModel)]="venda.produto.id" name="produto" required (selectionChange)="onProdutoChange($event.value)">
+        <mat-option *ngFor="let produto of produtos" [value]="produto.id">
+          {{produto.nomeProduto}} - Estoque: {{produto.quantidade}} - Preço: {{produto.precoVenda | currency:'BRL'}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Quantidade</mat-label>
+      <input matInput type="number" [(ngModel)]="venda.quantidade" name="quantidade" required min="1">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Preço de Venda</mat-label>
+      <input matInput type="number" [(ngModel)]="venda.precoVendido" name="precoVendido" required>
+    </mat-form-field>
+
+    <div *ngIf="produtoSelecionado" class="info-produto">
+      <p><strong>Produto:</strong> {{produtoSelecionado.nomeProduto}}</p>
+      <p><strong>Estoque disponível:</strong> {{produtoSelecionado.quantidade}}</p>
+      <p><strong>Preço de venda sugerido:</strong> {{produtoSelecionado.precoVenda | currency:'BRL'}}</p>
+      <p><strong>Total da venda:</strong> {{venda.quantidade * venda.precoVendido | currency:'BRL'}}</p>
+    </div>
+
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit">Registrar Venda</button>
+      <button mat-raised-button type="button" (click)="limparFormulario()">Limpar</button>
+      <button mat-raised-button color="warn" type="button" [routerLink]="['/lista-vendas']">Cancelar</button>
+    </div>
+  </form>
+</div>

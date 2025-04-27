@@ -1,0 +1,12 @@
+import { Routes } from '@angular/router';
+import { ListaProdutosComponent } from './componentes/lista-produtos/lista-produtos.component';
+import { HomeComponent } from './componentes/home/home.component';
+import { ProdutosComponent } from './componentes/produtos/produtos.component';
+
+export const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },  // Rota padrão
+  { path: 'home', component: HomeComponent },
+  { path: 'lista-produtos', component: ListaProdutosComponent },
+  { path: 'produtos', component: ProdutosComponent},
+  { path: '**', redirectTo: 'home' }  // Rota wildcard para páginas não encontradas
+];

@@ -1,0 +1,15 @@
+package com.api_cadastro_produtos.repository;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.api_cadastro_produtos.model.Movimentacao;
+import com.api_cadastro_produtos.model.TipoMovimentacao;
+
+public interface MovimentacaoRepository extends JpaRepository<Movimentacao, Long>{
+    List<Movimentacao> findByDescricaoContaining(String descricao);
+    List<Movimentacao> findByValorBetween(BigDecimal valorMin, BigDecimal valorMax);
+    List<Movimentacao> findByTipo(TipoMovimentacao tipo);
+}

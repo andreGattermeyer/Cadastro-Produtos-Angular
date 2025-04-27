@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ApiCadastroProdutosApplication<api-cadastro-produtos>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.api_cadastro_produtos.ApiCadastroProdutosApplication",
+            "projectName": "api-cadastro-produtos",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
